@@ -280,7 +280,20 @@ I've analyzed your symptom profile (**${assessment?.phenotype?.code || 'Phenotyp
                       fontWeight: isAI ? '500' : '600'
                     }}
                   >
-                    {msg.text}
+                    {msg.text.split('\n').map((line, lIdx) => {
+                      const parts = line.split(/(\*\*.*?\*\*)/g);
+                      return (
+                        <React.Fragment key={lIdx}>
+                          {parts.map((part, pIdx) => {
+                            if (part.startsWith('**') && part.endsWith('**') && part.length >= 4) {
+                              return <strong key={pIdx} style={{ fontWeight: '800' }}>{part.slice(2, -2)}</strong>;
+                            }
+                            return part;
+                          })}
+                          {lIdx < msg.text.split('\n').length - 1 && <br />}
+                        </React.Fragment>
+                      );
+                    })}
                   </div>
                   <span
                     style={{

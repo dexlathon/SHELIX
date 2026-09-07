@@ -62,7 +62,13 @@ export function getSubscriptionStatus() {
   try {
     const saved = localStorage.getItem('pcos_subscription_status');
     if (saved) {
-      return JSON.parse(saved);
+      const parsed = JSON.parse(saved);
+      if (!parsed.isPremium && parsed.trialEndDate) {
+        const diffMs = new Date(parsed.trialEndDate).getTime() - Date.now();
+        const daysLeft = Math.max(0, Math.ceil(diffMs / (1000 * 60 * 60 * 24)));
+        parsed.trialDaysLeft = daysLeft;
+      }
+      return parsed;
     }
   } catch (e) {
     // ignore
@@ -77,7 +83,7 @@ export function getSubscriptionStatus() {
     isPremium: false,
     planId: 'trial',
     planName: '30-Day Free Trial',
-    trialDaysLeft: 28,
+    trialDaysLeft: FREE_TRIAL_DAYS,
     trialEndDate: trialEndDate.toISOString(),
     startDate: now.toISOString()
   };

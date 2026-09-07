@@ -47,6 +47,7 @@ export default function LocalDoctorsModal({
 }) {
   if (!isOpen) return null;
 
+  const trans = t || {};
   const [selectedCity, setSelectedCity] = useState('chennai');
   const [selectedSpecialty, setSelectedSpecialty] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
@@ -132,7 +133,7 @@ export default function LocalDoctorsModal({
             </div>
             <div>
               <div style={{ fontSize: '15.5px', fontWeight: '800' }}>
-                {t.doctorDirTitle || 'Local PCOS Specialists & Doctors'}
+                {trans.doctorDirTitle || 'Local PCOS Specialists & Doctors'}
               </div>
               <div style={{ fontSize: '11px', color: '#DBEAFE', fontWeight: '600' }}>
                 Verified Doctors, Endocrinologists & 24/7 ER
@@ -177,12 +178,12 @@ export default function LocalDoctorsModal({
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#991B1B' }}>
               <AlertTriangle size={18} color="#DC2626" />
               <span style={{ fontSize: '13px', fontWeight: '800', textTransform: 'uppercase' }}>
-                {t.emergencyCareTitle || 'Severe Symptom Emergency Red Flags'}
+                {trans.emergencyCareTitle || 'Severe Symptom Emergency Red Flags'}
               </span>
             </div>
 
             <p style={{ fontSize: '11.5px', color: '#7F1D1D', margin: 0, lineHeight: 1.45, fontWeight: '600' }}>
-              {t.emergencyCareDesc ||
+              {trans.emergencyCareDesc ||
                 'If you experience acute sharp pelvic pain, soaking 2+ pads/hour, or dizziness, visit an emergency hospital ER immediately.'}
             </p>
 
@@ -201,7 +202,7 @@ export default function LocalDoctorsModal({
                 }}
               >
                 <Phone size={13} />
-                {t.callEmergency || 'Call National Emergency (108)'}
+                {trans.callEmergency || 'Call National Emergency (108)'}
               </a>
               <a
                 href="tel:1091"
@@ -262,7 +263,7 @@ export default function LocalDoctorsModal({
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <MapPin size={16} color="var(--primary)" />
               <span style={{ fontSize: '12.5px', fontWeight: '800', color: 'var(--text-main)' }}>
-                {t.selectCity || 'Select City'}:
+                {trans.selectCity || 'Select City'}:
               </span>
               <select
                 className="lang-select-dropdown"
@@ -364,7 +365,7 @@ export default function LocalDoctorsModal({
                   }}
                 >
                   <Share2 size={12} />
-                  {t.shareSummaryWithDoctor || 'View Doctor Brief'}
+                  {trans.shareSummaryWithDoctor || 'View Doctor Brief'}
                 </button>
               )}
             </div>
@@ -489,7 +490,7 @@ export default function LocalDoctorsModal({
                       </span>
                       {doc.availableToday && (
                         <span className="progress-category-pill pill-emerald" style={{ fontSize: '10px' }}>
-                          {t.availableTodayBadge || 'Available Today'}
+                          {trans.availableTodayBadge || 'Available Today'}
                         </span>
                       )}
                       <span style={{ fontSize: '10.5px', color: 'var(--text-light)', fontWeight: '600', marginLeft: 'auto' }}>
@@ -512,7 +513,7 @@ export default function LocalDoctorsModal({
                         }}
                       >
                         <Phone size={13} />
-                        {t.callClinic || 'Call Clinic'}
+                        {trans.callClinic || 'Call Clinic'}
                       </a>
 
                       <button
@@ -527,7 +528,7 @@ export default function LocalDoctorsModal({
                         }}
                       >
                         <Calendar size={13} />
-                        {t.bookAppointment || 'Book Appointment'}
+                        {trans.bookAppointment || 'Book Appointment'}
                       </button>
                     </div>
                   </div>
@@ -552,7 +553,7 @@ export default function LocalDoctorsModal({
             Emergency: 108 • Women: 1091
           </span>
           <button type="button" className="btn-secondary" onClick={onClose} style={{ padding: '8px 16px', fontSize: '12px' }}>
-            {t.close || 'Close'}
+            {trans.close || 'Close'}
           </button>
         </div>
       </div>

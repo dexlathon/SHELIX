@@ -265,7 +265,6 @@ export default function App() {
         </div>
 
         {/* Mobile App Header with Profile Trigger & Top Corner Health Emoji */}
-        {/* Mobile App Header with Profile Trigger & Top Corner Health Emoji */}
         <Navbar
           onReset={handleResetQuiz}
           isExpanded={isExpanded}
